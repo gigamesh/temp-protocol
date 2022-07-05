@@ -1,0 +1,13 @@
+[default]
+libraries = []
+libs = ['node_modules','lib']
+src = 'protocol/contracts'
+out = 'protocol/out'
+test = 'protocol/forge-tests'
+remappings = [
+  "forge-std=lib/forge-std/src/",
+  "@openzeppelin=protocol/node_modules/@openzeppelin/",
+  "@rari-capital/solmate=protocol/node_modules/@rari-capital/solmate/",
+  "hardhat=protocol/node_modules/hardhat/",
+]
+gas_reports = ["ArtistV5","ArtistV6","ArtistCreatorV2","ArtistCreatorV3"]

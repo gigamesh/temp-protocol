@@ -1,0 +1,20 @@
+node_modules/
+outputs/
+Reports/
+coverage/
+cache/
+artifacts/
+.openzeppelin/
+build/
+.env
+*.DS_Store
+env*
+.vscode
+typechain
+.turbo
+
+
+# foundry
+out/
+cache/
+artifacts/

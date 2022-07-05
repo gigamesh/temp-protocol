@@ -1,0 +1,90 @@
+{
+  "name": "@soundxyz/protocol",
+  "version": "8.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/soundxyz/protocol-public"
+  },
+  "license": "GPLv3",
+  "main": "src/index.ts",
+  "bin": {
+    "protocol-hardhat": "./bin/hardhat.cjs"
+  },
+  "scripts": {
+    "build": "pnpm build:hh",
+    "build:hh": "hardhat compile --force",
+    "clean": "rm -rf artifacts cache dist",
+    "deploy-upgrade": "hardhat deploy-upgrade",
+    "deploy:local": "ARTIST_VERSION=5 hardhat node",
+    "deploy:rinkeby": "ARTIST_VERSION=5 hardhat --network rinkeby deploy",
+    "prepack": "pnpm -w build && bob-tsm build.ts",
+    "postpublish": "gh-release",
+    "seed:rinkeby": "DEPLOY_SEED_DATA=true pnpm deploy:rinkeby",
+    "test:hh": "hardhat test",
+    "test:f": "forge test -vvv",
+    "test:w": "forge test --watch -vvv",
+    "test": "pnpm test:hh && pnpm test:f",
+    "coverage": "hardhat coverage",
+    "size": "hardhat size-contracts",
+    "test-watcher": "bob-tsm --cjs scripts/test-watcher.ts",
+    "test-watcher:rinkeby": "NEXT_PUBLIC_VERCEL_ENV=preview pnpm test-watcher",
+    "transfer-ownership": "hardhat transfer-ownership",
+    "upgrade-beacon": "hardhat upgrade-beacon",
+    "verify": "hardhat verify-contract"
+  },
+  "dependencies": {
+    "@ethersproject/abi": "^5.6.3",
+    "@ethersproject/bytes": "^5.6.1",
+    "@ethersproject/hardware-wallets": "^5.6.1",
+    "@ethersproject/units": "^5.6.0",
+    "@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@0.3.0-beta.13",
+    "@nomiclabs/hardhat-etherscan": "^2.1.6",
+    "@nomiclabs/hardhat-solhint": "^2.0.0",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@openzeppelin/contracts": "^4.4.0",
+    "@openzeppelin/contracts-upgradeable": "^4.4.0",
+    "@openzeppelin/hardhat-upgrades": "^1.12.0",
+    "@rari-capital/solmate": "^6.2.0",
+    "@typechain/ethers-v5": "^10.0.0",
+    "@typechain/hardhat": "^6.0.0",
+    "dotenv": "^16.0.0",
+    "ethereum-waffle": "^3.4.0",
+    "ethers": "^5.4.7",
+    "hardhat-contract-sizer": "^2.5.0",
+    "hardhat-deploy": "^0.9.2",
+    "hardhat-gas-reporter": "^1.0.4",
+    "lodash": "^4.17.21",
+    "solhint": "^3.3.6",
+    "solidity-coverage": "^0.7.20",
+    "typechain": "^8.0.0"
+  },
+  "devDependencies": {
+    "@ethersproject/providers": "^5.5.3",
+    "@pnpm/exportable-manifest": "^2.2.4",
+    "@pnpm/types": "^7.9.0",
+    "@types/chai": "^4.3.0",
+    "@types/fs-extra": "^9.0.13",
+    "@types/lodash": "^4.14.178",
+    "@types/mocha": "^9.1.0",
+    "@types/node": "^17.0.15",
+    "@types/prettier": "^2.4.2",
+    "bob-tsm": "^0.4.6",
+    "chai": "^4.2.0",
+    "esbuild": "^0.14.19",
+    "fs-extra": "^10.0.0",
+    "hardhat": "^2.9.7",
+    "prettier": "^2.5.1",
+    "prettier-plugin-solidity": "^1.0.0-alpha.59",
+    "solhint-plugin-prettier": "^0.0.5",
+    "ts-generator": "^0.1.1",
+    "typescript": "^4.5.4"
+  },
+  "peerDependencies": {
+    "@ethersproject/providers": "^5.5.3",
+    "hardhat": "^2.9.7"
+  },
+  "publishConfig": {
+    "access": "public",
+    "directory": "dist"
+  }
+}
